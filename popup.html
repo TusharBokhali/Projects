@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            width: 400px;
+            padding: 10px;
+            height: 250px;
+            background-color: rgb(59, 54, 54);
+            color: white;
+            display: flex;
+            border-radius: 10px;
+        }
+        .info {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+        button{
+            width: 250px;
+            margin-top: 20px;
+            padding: 10px 35px;
+            font-size: 18px;
+            border-radius: 100px;
+            cursor: pointer;
+            background-color: darkcyan;
+            color: white;
+            border: none;
+        }
+        .ALL{
+            margin-left: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="ALL">
+
+        <h3>Font properties</h3>
+        <div id="styleInfo">
+            <div class="info">Font Family: <span id="fontFamily"></span></div>
+            <div class="info">Font Size: <span id="fontSize"></span></div>
+            <div class="info">Font Weight: <span id="fontWeight"></span></div>
+            <div class="info">Color: <span id="color"></span></div>
+            <div class="info">LineHeight: <span id="Line"></span></div>
+            <div class="info">letter-spacing: <span id="letter"></span></div>
+        </div>
+        <button id="inspectBtn">Find</button>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
