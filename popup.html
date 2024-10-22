@@ -5,7 +5,6 @@
         body {
             font-family: Arial, sans-serif;
             width: 400px;
-            padding: 10px;
             height: 250px;
             background-color: rgb(59, 54, 54);
             color: white;
@@ -13,8 +12,13 @@
             border-radius: 10px;
         }
         .info {
-            margin: 5px 0;
+            margin: 8px 0;
             font-size: 18px;
+            letter-spacing: 1px;
+            color: white;
+        }
+        .info span{
+            color: rgb(44, 221, 44);
         }
         button{
             width: 250px;
@@ -28,7 +32,10 @@
             border: none;
         }
         .ALL{
-            margin-left: 100px;
+            margin-left: 50px;
+        }
+        #styleInfo{
+            text-align: left;
         }
 
     </style>
@@ -40,11 +47,20 @@
         <div id="styleInfo">
             <div class="info">Font Family: <span id="fontFamily"></span></div>
             <div class="info">Font Size: <span id="fontSize"></span></div>
+            <div class="info">Height: <span id="height"></span></div>
+            <div class="info">Width: <span id="width"></span></div>
+            <div class="info">Display Type: <span id="displayType"></span></div>
             <div class="info">Font Weight: <span id="fontWeight"></span></div>
             <div class="info">Color: <span id="color"></span></div>
             <div class="info">LineHeight: <span id="Line"></span></div>
             <div class="info">letter-spacing: <span id="letter"></span></div>
             <div class="info">selector <span id="selector"></span></div>
+            <div class="info">Border Radius: <span id="borderRadius"></span></div>
+            <div class="info">Margin: <span id="margin"></span></div>
+            <div class="info">Text Transform: <span id="textTransform"></span></div>
+            <div class="info">Word Spacing: <span id="wordSpacing"></span></div>
+            <div class="info">Background Color: <span id="background"></span></div>
+
         </div>
         <button id="inspectBtn">Find</button>
     </div>

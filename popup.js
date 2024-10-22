@@ -1,4 +1,3 @@
-
 document.getElementById('inspectBtn').addEventListener('click', () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => { 
         chrome.scripting.executeScript({ 
@@ -9,27 +8,31 @@ document.getElementById('inspectBtn').addEventListener('click', () => {
               
             if (results && results[0].result) {  
                 const styles = results[0].result;  
- 
-                // Display the styles in the popup
+
                 document.getElementById('fontFamily').textContent = styles.fontFamily; 
                 document.getElementById('fontSize').textContent = styles.fontSize; 
                 document.getElementById('fontWeight').textContent = styles.fontWeight; 
                 document.getElementById('color').textContent = styles.color; 
                 document.getElementById('Line').textContent = styles.lineHeight; 
                 document.getElementById('letter').textContent = styles.letterSpacing; 
-                
-                // Display the selector (class or id)
-                const selectorElement = document.getElementById('selector');
-                selectorElement.textContent = styles.selector;
+                document.getElementById('borderRadius').textContent = styles.borderRadius;
+                document.getElementById('margin').textContent = styles.margin;
+                document.getElementById('textTransform').textContent = styles.textTransform;
+                document.getElementById('wordSpacing').textContent = styles.wordSpacing;
+                document.getElementById('background').textContent = styles.backgroundColor;
+                document.getElementById('height').textContent = styles.height;
+                document.getElementById('width').textContent = styles.width;
+                document.getElementById('displayType').textContent = styles.displayType;
 
-                // Dynamically set the title for the selector element
+
+                const selectorElement = document.getElementById('selector');
+                selectorElement.textContent = styles.selector;  
                 selectorElement.setAttribute('title', `Selector: ${styles.selector}`);
             } 
         }); 
     }); 
 }); 
 
-// Function to be injected into the page context 
 function getSelectedTextStylesFromPage() { 
     const selection = window.getSelection(); 
     if (selection.rangeCount > 0) { 
@@ -38,7 +41,6 @@ function getSelectedTextStylesFromPage() {
  
         const computedStyles = window.getComputedStyle(selectedElement); 
         
-        // Get the selector (either class or id)
         let selector = '';
         if (selectedElement.id) {
             selector = `#${selectedElement.id}`;
@@ -48,6 +50,8 @@ function getSelectedTextStylesFromPage() {
             selector = selectedElement.tagName.toLowerCase();
         }
 
+        const displayType = computedStyles.display === 'block' ? 'Block' : 'Inline';
+
         return { 
             fontFamily: computedStyles.fontFamily, 
             fontSize: computedStyles.fontSize, 
@@ -55,7 +59,16 @@ function getSelectedTextStylesFromPage() {
             color: computedStyles.color, 
             lineHeight: computedStyles.lineHeight, 
             letterSpacing: computedStyles.letterSpacing,
-            selector: selector // Return the selector
+            borderRadius: computedStyles.borderRadius,
+            margin: computedStyles.margin,
+            textTransform: computedStyles.textTransform,
+            wordSpacing: computedStyles.wordSpacing,
+            backgroundColor: computedStyles.backgroundColor,
+            textDecoration: computedStyles.textDecoration,  
+            height: computedStyles.height,                  
+            width: computedStyles.width,                    
+            displayType: displayType,                       
+            selector: selector
         }; 
     }  
     return null;  
